@@ -7,3 +7,9 @@ Private Sub YourWebBrowserControl_BeforeNavigate2(ByVal pDisp As Object, URL As 
         YourWebBrowserControl.Navigate URL
     End If
 End Sub
+
+
+Private Sub Form_Load()
+    ' Replace "YourEdgeWebBrowserControlName" with the actual name of your Edge Web Browser control
+    Me.YourEdgeWebBrowserControlName.Object.ControlSource = "https://example.com"
+End Sub
