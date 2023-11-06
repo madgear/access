@@ -13,3 +13,9 @@ Private Sub Form_Load()
     ' Replace "YourEdgeWebBrowserControlName" with the actual name of your Edge Web Browser control
     Me.YourEdgeWebBrowserControlName.Object.ControlSource = "https://example.com"
 End Sub
+
+Private Sub Form_Load()
+    ' Replace "YourEdgeWebBrowserControlName" with the actual name of your Edge Web Browser control
+    ' Use a relative path to specify the HTML file in the current folder
+    Me.YourEdgeWebBrowserControlName.Object.ControlSource = CurrentProject.Path & "\your_local_file.html"
+End Sub
