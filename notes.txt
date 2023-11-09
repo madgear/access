@@ -1,3 +1,14 @@
+
+
+Private Sub Form_Load()
+    Dim CurrentDirectory As String
+    CurrentDirectory = CurrentProject.Path ' Get the current directory of the Access database
+
+    ' Set the ControlSource to load a local HTML file in the current directory
+    Me.YourWebBrowserControlName.ControlSource = CurrentDirectory & "\yourlocalfile.html"
+End Sub
+
+
 Private Sub YourWebBrowserControl_BeforeNavigate2(ByVal pDisp As Object, URL As Variant, Flags As Variant, TargetFrameName As Variant, PostData As Variant, Headers As Variant, Cancel As Boolean)
     ' Check if the URL is different from the current page in the web browser control
     If URL <> YourWebBrowserControl.LocationURL Then
