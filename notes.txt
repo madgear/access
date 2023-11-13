@@ -1,37 +1,10 @@
-
-
-Private Sub Form_Load()
-    Dim CurrentDirectory As String
-    CurrentDirectory = CurrentProject.Path ' Get the current directory of the Access database
-
-    ' Set the ControlSource to load a local HTML file in the current directory
-    Me.YourWebBrowserControlName.ControlSource = CurrentDirectory & "\yourlocalfile.html"
+Private Sub UserForm_Initialize()
+    WebBrowser1.Navigate "about:blank"
 End Sub
 
-
-Private Sub YourWebBrowserControl_BeforeNavigate2(ByVal pDisp As Object, URL As Variant, Flags As Variant, TargetFrameName As Variant, PostData As Variant, Headers As Variant, Cancel As Boolean)
-    ' Check if the URL is different from the current page in the web browser control
-    If URL <> YourWebBrowserControl.LocationURL Then
-        ' Cancel the navigation in the web browser control
-        Cancel = True
-        ' Navigate to the clicked link in the same web browser control
-        YourWebBrowserControl.Navigate URL
-    End If
-End Sub
-
-
-Private Sub Form_Load()
-    ' Replace "YourEdgeWebBrowserControlName" with the actual name of your Edge Web Browser control
-    Me.YourEdgeWebBrowserControlName.Object.ControlSource = "https://example.com"
-End Sub
-
-Private Sub Form_Load()
-    ' Replace "YourEdgeWebBrowserControlName" with the actual name of your Edge Web Browser control
-    ' Use a relative path to specify the HTML file in the current folder
-    Me.YourEdgeWebBrowserControlName.Object.ControlSource = CurrentProject.Path & "\your_local_file.html"
-End Sub
-
-
-If the CodeMirror theme works in standalone Internet Explorer but not in the WebBrowser control in your VBA application, it might be related to compatibility issues or the way the WebBrowser control renders content. Here are a few suggestions to troubleshoot:Compatibility Mode: Ensure that the WebBrowser control is not running in a different compatibility mode than standalone Internet Explorer. You can set the compatibility mode in your HTML file using the following meta tag:<meta http-equiv="X-UA-Compatible" content="IE=edge">This ensures that the WebBrowser control uses the latest version of Internet Explorer.Ensure External Resources are Loaded: If your theme relies on external resources (CSS, JavaScript), make sure that they are properly referenced in your HTML file and are accessible. You can use absolute paths or include them locally.Security Settings: Check if there are any security settings in the WebBrowser control that might be affecting the loading of external resources or styles. Adjust the security settings accordingly.Debugging: Use the Developer Tools in Internet Explorer to debug and inspect the elements. This can help identify any errors or issues with loading resources.WebBrowser Control Events: Explore the events of the WebBrowser control in VBA. You can handle events like DocumentComplete to ensure that the page has fully loaded before attempting to apply the theme.Here's an example of handling the DocumentComplete event:Private Sub WebBrowser1_DocumentComplete(ByVal pDisp As Object, URL As Variant)
-    ' Apply CodeMirror theme or any other post-loading operations
-End SubMake sure to adapt this code according to your needs.If the issue persists, you might need to provide more details or share relevant parts of your code for a more accurate diagnosis.
+Private Sub UserForm_Activate()
+    ' Load TinyMCE editor script
+    WebBrowser1.Document.body.innerHTML = "<script src=""https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js""></script>" & _
+                                          "<textarea id=""mytextarea""></textarea>" & _
+                                          "<script>tinymce.init({selector: '#mytextarea'});</script>"
+End SubRetrieve HTML Content:
