@@ -1,3 +1,26 @@
+
+getCode method. Here's an example:$(document).ready(function() {
+  // Initialize Summernote with CodeMirror
+  $('#summernote').summernote({
+    codemirror: {
+      mode: 'text/html',
+      htmlMode: true,
+      lineNumbers: true,
+      theme: 'monokai',
+      keyMap: 'sublime',
+    }
+  });
+
+  // Get the value of the CodeMirror codeview
+  function getCodeMirrorValue() {
+    var codeMirrorValue = $('#summernote').summernote('codeview.get', 'codemirror');
+    console.log(codeMirrorValue);
+  }
+
+  // Example: Call the function to get the codeview value
+  getCodeMirrorValue();
+});In this example, the
+
 Private Sub UserForm_Initialize()
     WebBrowser1.Navigate "about:blank"
 End Sub
